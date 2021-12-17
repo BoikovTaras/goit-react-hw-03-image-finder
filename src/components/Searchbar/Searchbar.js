@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { toast } from "react-toastify";
+import s from './Searchbar.module.css';
+
 export default class Searchbar extends Component {
   state = {
     input: '',
@@ -21,7 +22,7 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
+      <header className={s.searchbar}>
         <form className="form" onSubmit={this.searchButton}>
           <button type="submit" className="button">
             Поиск
