@@ -4,9 +4,13 @@ import s from './ImageGalleryItem.module.css';
 export default class ImageGalleryItem extends Component {
   render() {
     return (
-      <div>
+      <ul>
         {this.props.images.map(image => (
-          <li key={image.id} className={s.galleryItem}>
+          <li
+            key={image.id}
+            className={s.galleryItem}
+            onClick={this.props.openModal}
+          >
             <img
               className={s.galleryItemImage}
               src={image.webformatURL}
@@ -14,7 +18,7 @@ export default class ImageGalleryItem extends Component {
             />
           </li>
         ))}
-      </div>
+      </ul>
     );
   }
 }
