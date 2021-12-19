@@ -4,7 +4,7 @@ import s from './ImageGalleryItem.module.css';
 export default class ImageGalleryItem extends Component {
   render() {
     return (
-      <ul>
+      <ul className={s.gallery}>
         {this.props.images.map(image => (
           <li
             key={image.id}
@@ -15,6 +15,8 @@ export default class ImageGalleryItem extends Component {
               className={s.galleryItemImage}
               src={image.webformatURL}
               alt={image.id}
+              largeImage={image.largeImageURL}
+              onClick={this.props.largeUrl}
             />
           </li>
         ))}
