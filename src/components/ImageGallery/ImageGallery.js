@@ -42,14 +42,12 @@ export default class ImageGallery extends Component {
   }
 
   toggleModal = e => {
-    // console.log(e.target.key)
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
   };
 
   getLargeUrl = url => {
-    console.log('url.target.largeImage', url.target.alt);
     this.setState(({ largeUrl }) => ({
       largeUrl: url.target.alt,
     }));

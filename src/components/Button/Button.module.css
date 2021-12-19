@@ -1,0 +1,20 @@
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  padding: 0 60px;
+}
+.button {
+  border-color: #3498db;
+  color: #fff;
+  border: 2px solid #3498db;
+  border-radius: 0.6em;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  padding: 10px 25px;
+  background-color: rgb(68, 236, 228);
+}
+
+.button:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
