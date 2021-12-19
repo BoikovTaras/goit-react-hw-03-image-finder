@@ -2,12 +2,12 @@
   position: relative;
   width: 125px;
   height: 29px;
-  margin: auto;
+  margin-top: auto;
 }
 
 .ballsWaveG {
   position: absolute;
-  top: 0;
+  top: 180px;
   background-color: rgb(0, 0, 0);
   width: 16px;
   height: 16px;

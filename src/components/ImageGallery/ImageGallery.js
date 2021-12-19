@@ -42,16 +42,17 @@ export default class ImageGallery extends Component {
   }
 
   toggleModal = e => {
+    // console.log(e.target.key)
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
   };
 
   getLargeUrl = url => {
-    console.log(url.target.largeImage);
-    // this.setState(({ largeUrl }) => ({
-    //   largeUrl: url.target.largeImage
-    // }))
+    console.log('url.target.largeImage', url.target.alt);
+    this.setState(({ largeUrl }) => ({
+      largeUrl: url.target.alt,
+    }));
   };
 
   loadMore = event => {
@@ -63,13 +64,13 @@ export default class ImageGallery extends Component {
     const { images, error, showModal, status } = this.state;
 
     if (status === 'idle') {
-      return <div>Let's find some images</div>;
+      return <h2 className={s.title}>Let's find some images</h2>;
     }
     if (status === 'pending') {
       return <Loader />;
     }
     if (status === 'rejected') {
-      return <h1>{error.message}</h1>;
+      return <h2 className={s.title}>{error.message}</h2>;
     }
     if (status === 'resolved') {
       return (

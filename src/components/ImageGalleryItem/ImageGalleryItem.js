@@ -14,8 +14,8 @@ export default class ImageGalleryItem extends Component {
             <img
               className={s.galleryItemImage}
               src={image.webformatURL}
-              alt={image.id}
-              largeImage={image.largeImageURL}
+              alt={image.largeImageURL}
+              value={image.largeImageURL}
               onClick={this.props.largeUrl}
             />
           </li>
