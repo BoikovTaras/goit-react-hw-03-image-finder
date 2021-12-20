@@ -1,7 +1,7 @@
 {
-  "name": "goit-react-hw-03-image-finder.v2",
+  "name": "goit-react-hw-03-image-finder",
   "version": "0.1.0",
-  "homepage": "https://BoikovTaras.github.io/goit-react-hw-03-image-finder.v2/",
+  "homepage": "https://BoikovTaras.github.io/goit-react-hw-03-image-finder/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BoikovTaras/goit-react-hw-03-image-finder.v2.git"
+    "url": "git+https://github.com/BoikovTaras/goit-react-hw-03-image-finder.git"
   },
   "scripts": {
     "start": "react-scripts start",
