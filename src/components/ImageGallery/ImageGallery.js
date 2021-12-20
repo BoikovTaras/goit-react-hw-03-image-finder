@@ -4,10 +4,10 @@ import s from './ImageGallery.module.css';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
+import imageApi from '../../servises/image-api.js';
 
 export default class ImageGallery extends Component {
   state = {
-    KEY: '24115894-e73b87c75d7b7d0a00bbe3b23',
     images: [],
     error: null,
     page: 1,
@@ -18,21 +18,14 @@ export default class ImageGallery extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { name } = this.props;
-    const { page, KEY } = this.state;
+    const { page } = this.state;
     if (prevProps.name !== name) {
       this.setState({ page: 1 });
     }
     if (prevProps.name !== name || prevState.page !== page) {
       this.setState({ status: 'pending' });
-      fetch(
-        `https://pixabay.com/api/?q=${name}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`,
-      )
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-          return Promise.reject(new Error(`Image with name ${name} not found`));
-        })
+      imageApi
+        .fetchImage(name, page)
         .then(images =>
           this.setState({ images: images.hits, status: 'resolved' }),
         )
@@ -53,8 +46,7 @@ export default class ImageGallery extends Component {
     }));
   };
 
-  loadMore = event => {
-    event.preventDefault();
+  loadMore = () => {
     this.setState({ page: this.state.page + 1 });
   };
 
@@ -78,11 +70,18 @@ export default class ImageGallery extends Component {
               <img src={this.state.largeUrl} alt="www" />
             </Modal>
           )}
-          <ImageGalleryItem
-            images={images}
-            openModal={this.toggleModal}
-            largeUrl={this.getLargeUrl}
-          />
+          <ul className={s.gallery}>
+            {images.map(image => (
+              <ImageGalleryItem
+                key={image.id}
+                src={image.webformatURL}
+                alt={image.largeImageURL}
+                openModal={this.toggleModal}
+                largeUrl={this.getLargeUrl}
+              />
+            ))}
+          </ul>
+
           <Button onClick={this.loadMore} />
         </>
       );
